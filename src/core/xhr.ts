@@ -1,10 +1,10 @@
-import { AxiosRequestConfig,AxiosResponse } from '../types'
+import { AxiosRequestConfig, AxiosResponse } from '../types'
 import { parseHeader } from '../helpers/head'
 import { createError } from '../helpers/error'
 
 export default function xhr(config: AxiosRequestConfig) {
   return new Promise((resolve, reject) => {
-    const { data = null, url, method = 'get', headers, responseType, timeout } = config
+    const { data = null, url, method = 'get', headers, responseType, timeout, cancelToken } = config
     const request = new XMLHttpRequest()
     if (responseType) {
       request.responseType = responseType // 返回数据类型
@@ -51,9 +51,17 @@ export default function xhr(config: AxiosRequestConfig) {
         request.setRequestHeader(name, headers[name])
       }
     })
+
+    if (cancelToken) {
+      cancelToken.promise.then(reason => {
+        request.abort() // 取消
+        reject(reason)
+      })
+    }
+
     request.send(data)
 
-    function handleResponse(response: AxiosResponse):void {
+    function handleResponse(response: AxiosResponse): void {
       if (response.status >= 200 && response.status < 300) {
         resolve(response)
       } else {
