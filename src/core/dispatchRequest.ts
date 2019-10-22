@@ -45,7 +45,7 @@ function transformResponseData(res: any): AxiosResponse {
   return res
 }
 // export default axios
-// abort dfdfdfdffd
+// abort dfdfdfdffddddddsssfde
 function throwIfCancellationRequested(config: AxiosRequestConfig): void {
   if (config.cancelToken) {
     config.cancelToken.throwIfRequested()
