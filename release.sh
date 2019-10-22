@@ -18,5 +18,5 @@ npm version "0.0.1" --message "[release] 0.0.1"
 git push origin master
 
 # pulish 代码发布到npm
-npm pulish
+npm publish
 fi
