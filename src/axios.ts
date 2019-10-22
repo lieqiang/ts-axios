@@ -14,6 +14,6 @@ function createInstance(config: AxiosRequestConfig): AxiosStatic {
 const axios = createInstance(defaults) // bound 原型
 
 axios.CancelToken = CancelToken
-axios.Cancel = Cancel
+// axios.Cancel = Cancel
 axios.isCancel = isCancel
 export default axios // bound 原型 axios 混合对象，axios 本身是一个方法，带一些混合属性

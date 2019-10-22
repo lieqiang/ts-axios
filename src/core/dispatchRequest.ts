@@ -40,8 +40,8 @@ function transformHeader(config: AxiosRequestConfig): any {
   return processHeader(headers, data)
 }
 
-function transformResponseData(res: AxiosResponse): AxiosResponse {
-  res.data = transformResponse(res.data)
+function transformResponseData(res: any): AxiosResponse {
+  res.data = transformResponse(res.data) // 此处跟源码 不太一样，需更正
   return res
 }
 // export default axios

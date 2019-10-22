@@ -9,7 +9,7 @@ export default class CancelToken {
   reason?: Cancel
   constructor(executor: CancelExecutor) {
     let resolvePromise: ResolvePromise
-    this.promise = new Promise<string>(resolve => {
+    this.promise = new Promise<Cancel>(resolve => {
       // pending
       resolvePromise = resolve
     })
@@ -17,7 +17,7 @@ export default class CancelToken {
       if (this.reason) {
         return
       }
-      this.reason = new Cancel(message)
+      this.reason = new Cancel(message!)
       resolvePromise(this.reason) // pending状态 变为 resolve状态
     })
   }

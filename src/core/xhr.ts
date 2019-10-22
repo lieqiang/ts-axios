@@ -52,12 +52,12 @@ export default function xhr(config: AxiosRequestConfig) {
       }
     })
 
-    if (cancelToken) {
-      cancelToken.promise.then(reason => {
-        request.abort() // 取消
-        reject(reason)
-      })
-    }
+    // if (cancelToken) {
+    //   cancelToken.promise.then(reason => {
+    //     request.abort() // 取消
+    //     reject(reason)
+    //   })
+    // }
 
     request.send(data)
 
